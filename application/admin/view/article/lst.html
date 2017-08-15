@@ -37,7 +37,7 @@
                                         <li>
                         <a href="{:url('index/index')}">系统</a>
                     </li>
-                                        <li class="active">管理员管理</li>
+                                        <li class="active">文章管理</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -45,7 +45,7 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('add')}'"> <i class="fa fa-plus"></i> Add
+<button type="button" tooltip="添加栏目" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Article/add')}'"> <i class="fa fa-plus"></i> Add
 </button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -55,33 +55,41 @@
                     <table class="table table-bordered table-hover">
                         <thead class="">
                             <tr>
-                                <th class="text-center" width='20%'>ID</th>
-                                <th class="text-center"  >用户名称</th>
-                                <th class="text-center"  width='30%'>操作</th>
+                                <th class="text-center" width='10%'>ID</th>
+                                <th class="text-center" width="20%">文章名称</th>
+                                 <th class="text-center" width='10%' >作者</th>
+                                <th class="text-center"  width='20%'>缩略图</th>
+                                <th class="text-center"   width='15%'>所属分类</th>
+                                <th class="text-center"  width='25%'>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                          {volist name='adminRes' id='admin'}
+                          {volist name='list' id='lists'}
                            <tr>
-                                <td align="center">{$admin.id}</td>
-                                <td align="center">{$admin.name}</td>
-                                
+                                <td align="center">{$lists.id}</td>
+                                <td align="center">{$lists.tittle}</td>
+                                <td align="center">{$lists.author}</td>
                                 <td align="center">
-                                <a href="{:url('admin/edit',array('id'=>$admin['id']))}" class="btn btn-primary btn-sm shiny">
+                                {if condition="$lists['pic'] neq ''"}<img src="{$lists.pic}" height="35">
+                                {else/}暂无缩略图
+                                {/if}</td>
+                                <td align="center">{$lists.cateName}</td>    
+                                <td align="center">
+                                <a href="{:url('Article/edit',array('id'=>$lists.id))}" class="btn btn-primary btn-sm shiny">
                                 <i class="fa fa-edit"></i> 编辑
                                 </a>
-                                <a href="{:url('admin/del',array('id'=>$admin['id']))}" class="btn btn-danger btn-sm shiny">
+                                <a href="{:url('Article/del',array('id'=>$lists.id))}" class="btn btn-danger btn-sm shiny">
                                 <i class="fa fa-trash-o"></i> 删除
                                 </a>
                                 </td>
                           </tr>     
-                          {/volist}                         
+                           {/volist}            
                         </tbody>
                     </table>
                     <div style="width:100%;text-align:center;margin:30px 0px;">
-                        {$adminRes->render()} 
+                        {$list->render()}
                     </div>
-                    
+                   
                 </div>
                 <div>
                 	                </div>

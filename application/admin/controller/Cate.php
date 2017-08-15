@@ -8,7 +8,7 @@ class Cate extends Common
       $cate=new cateModel();
       $datas=$cate->cateTree();
 
-      $this->assign('cateList',$datas);
+      $this->assign('List',$datas);
         return view();
     }
 
@@ -51,8 +51,7 @@ class Cate extends Common
     }
 
     public function del($id){
-      $model=new cateModel();
-      if($model->del($id)){
+      if(cateModel::destroy($id)){
         $this->success('删除栏目成功','cate/lst');
       }
       else{

@@ -6,7 +6,7 @@ class Admin extends Common
     public function lst()
     {
         $model=new adminModel();
-        $adminRes=$model->getAdmin();
+        $adminRes=$model->paginate(8);
         $this->assign('adminRes',$adminRes);
         return view();
     }

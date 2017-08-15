@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>TP5后台管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                                         <li>
-                        <a href="#">系统</a>
+                        <a href="{:url('index/index')}">系统</a>
                     </li>
                                         <li class="active">栏目管理</li>
                                         </ul>
@@ -63,16 +63,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                           {volist name='cateList' id='cate'} 
+                           {volist name='List' id='cate'} 
                            <tr>
                                 <td align="center">{$cate.id}</td>
                                 <td align="left"><?php echo str_repeat('---',$cate['level']) ?>{$cate.cateName}</td>
                                 <td align="center">{$cate.pid}</td>
                                 <td align="center">
-                                  {if condition="$cate['type'] eq 0"}
-                                  列表
+                                  {if condition="$cate['type'] eq 1"}
+                                  文章列表
+                                  {elseif condition="$cate['type'] eq 2"/}
+                                  单页
                                   {else /}
-                                  单页栏目
+                                  图片列表
                                   {/if}
 
                                 </td>
@@ -89,7 +91,9 @@
                           {/volist}                     
                         </tbody>
                     </table>
-                   
+                   <div style="width:100%;text-align:center;margin:30px 0px;">
+                      
+                    </div>
                 </div>
                 <div>
                 	                </div>

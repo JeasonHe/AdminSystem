@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
         <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>TP5后台管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                                         <li>
-                        <a href="#">系统</a>
+                        <a href="{:url('index/index')}">系统</a>
                     </li>
                                         <li>
                         <a href="{:url('lst')}">管理员管理</a>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label no-padding-right">管理员名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="{$data.name}" name="name" required="" type="text">
+                                <input class="form-control" id="username" placeholder="{$data.name}" value="{$data.name}" name="name" required="" type="text">
                             </div>
                        
                         </div>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
                             <div class="col-sm-6">
-                                <input type='text' class="form-control" name="password" id='group_id' required="" placeholder="{$data.password}" style="width: 100%;"> 
+                                <input type='text' class="form-control" name="password" id='group_id' required="" placeholder="{$data.password}" value="{$data.password}"  style="width: 100%;"> 
                             </div>
                         </div>  
                         <div class="form-group">

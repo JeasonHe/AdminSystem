@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
         <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>TP5后台管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                                         <li>
-                        <a href="#">系统</a>
+                        <a href="{:url('index/index')}">系统</a>
                     </li>
                                         <li>
                         <a href="{:url('lst')}">栏目管理</a>
@@ -78,7 +78,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label no-padding-right">栏目名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="{$data['cateName']}" name="cateName" required="" type="text">
+                                <input class="form-control" id="username" placeholder="{$data['cateName']}" name="cateName" required="" type="text" value='{$data['cateName']}'>
                             </div>
                             <p class="help-block col-sm-4 red"></p>
                         </div>
@@ -87,8 +87,9 @@
                             <label for="group_id" class="col-sm-2 control-label no-padding-right">栏目类型</label>
                             <div class="col-sm-6">
                                 <select class="form-control" id="username" placeholder="" name="type" required="">
-                                     <option value='0' {if condition="$data['type'] eq 0"}checked='checked'{/if}>列表栏目</option>
-                                     <option value='1'>单页栏目</option>
+                                     <option value='1' {if condition="$data['type'] eq 1"}selected='selected'{/if}>文章列表</option>
+                                     <option value='2'{if condition="$data['type'] eq 2"} selected='selected'{/if}>单页</option>
+                                      <option value='3'{if condition="$data['type'] eq 3"} selected='selected'{/if}>图片列表</option>
                                 </select>
                             </div>
                         </div>  

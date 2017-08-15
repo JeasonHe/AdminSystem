@@ -3,8 +3,14 @@ namespace app\admin\model;
 use think\Model;
 class Cate extends Model
 {
+  //   public static function init(){
+  //    Cate::event('before_delete',function($data){
+  //        echo $this->getDelTree($data,$data->id);die;
+  //    });    
+  // } 
+
     public function cateTree(){
-       $data=db('cate')->select();
+       $data=db('cate')->paginate(10);
        return $this->cateSort($data);
     }
 
@@ -30,6 +36,9 @@ class Cate extends Model
       return true;
     }
 
+   //$id: 删除的Id传给函数
+   // $$data:  要删除id开始，往后的数据集合
+   // 将当前id与之后数据的pid相比较，如果相同则是该栏目的子栏目，将id存入数组，然后依次递归获取所有的子分类进行删除
     public function getDelTree($data,$id){
       static $arr =array();
        foreach($data as $key=>$val){
@@ -42,4 +51,6 @@ class Cate extends Model
       return $arr;
 
     }
+
+    
 }
