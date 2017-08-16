@@ -2,13 +2,7 @@
 namespace app\admin\model;
 use think\Model;
 class Cate extends Model
-{
-  //   public static function init(){
-  //    Cate::event('before_delete',function($data){
-  //        echo $this->getDelTree($data,$data->id);die;
-  //    });    
-  // } 
-
+{ 
     public function cateTree(){
        $data=db('cate')->paginate(10);
        return $this->cateSort($data);
@@ -29,11 +23,11 @@ class Cate extends Model
     public function del($id){
       $data=db('cate')->where('id','>','$id')->select();
       $arr=$this->getDelTree($data,$id);
-      db('cate')->where('id',$id)->delete();
-      foreach ($arr as $id) {
-        db('cate')->where('id',$id)->delete();
-      }
-      return true;
+       foreach ($arr as $id) {
+         db('cate')->where('id',$id)->delete();
+       }
+      
+      return $arr;
     }
 
    //$id: 删除的Id传给函数

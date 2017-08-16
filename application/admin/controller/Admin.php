@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use app\admin\model\Admin as adminModel;
+use app\admin\validate;
 class Admin extends Common
 {
     public function lst()
@@ -15,6 +16,11 @@ class Admin extends Common
     {
         if(request()->isPost()){
            $data=input('post.');
+
+           $result=$this->validate($data,'Admin.add');
+           if($result !== true){
+              $this->error($result);
+           }
            $model=new adminModel();
            $res=$model->addAdmin($data);
            if($res){
@@ -31,9 +37,14 @@ class Admin extends Common
     public function edit($id)
     {
         $model=new adminModel();
-
+        $da=input('post.');
         if(request()->isPost()){
-            $data=$model->editAdmin(input('post.'));
+            $data=$model->editAdmin($da);
+
+            $result=$this->validate($da,'Admin.edit');
+           if($result !== true){
+              $this->error($result);
+           }
             if($data){
                 $this->success('修改管理员信息成功','admin/lst');
             }

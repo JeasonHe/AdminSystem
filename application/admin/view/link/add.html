@@ -38,9 +38,9 @@
                         <a href="{:url('index/index')}">系统</a>
                     </li>
                                         <li>
-                        <a href="{:url('lst')}">管理员管理</a>
+                        <a href="{:url('cate/lst')}">友链管理</a>
                     </li>
-                                        <li class="active">添加管理员</li>
+                                        <li class="active">添加链接</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -52,23 +52,32 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增管理员</span>
+                <span class="widget-caption">新增链接</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="{:url('admin/add')}" method="post">
+                    <form class="form-horizontal" role="form" action="{:url('Link/add')}" method="post">
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label no-padding-right">管理员名称</label>
+                            <label for="name" class="col-sm-2 control-label no-padding-right">链接标题</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="name" required="" type="text">
+                               <input class="form-control" id="username" placeholder="" name="tittle" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label no-padding-right">链接描述</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="" placeholder="" name="description" required="" type="text"></textarea> 
                             </div>
                             <p class="help-block col-sm-4 red"></p>
                         </div>
 
                         <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">链接地址</label>
                             <div class="col-sm-6">
-                                <input type='text' class="form-control" name="password" id='group_id' required="" style="width: 100%;"> 
+                               <input class="form-control" id="username" placeholder="" name="link" required="" type="text">
                             </div>
                         </div>  
                         <div class="form-group">
