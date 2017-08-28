@@ -1,10 +1,10 @@
 <?php
 namespace app\index\controller;
-
-class Page extends Common
+use think\Model;
+class Article extends Model
 {
     public function index()
     {
-        return view();
+        return view('Article');
     }
 }

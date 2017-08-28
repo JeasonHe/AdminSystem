@@ -60,6 +60,18 @@
                         <!-- 隐藏域 -->
                         <input type="text" hidden="hidden" name="id" value="{$data.id}">
                         <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label no-padding-right">所属用户权限组</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="username" placeholder="" name="group_id" required="">
+                                     {volist name='list' id='list'}
+
+                                          <option value='{$list.id}' {if condition="$access['group_id'] eq $list['id']"} selected='selected'{/if}>{$list.title}</option>
+                                     }
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="name" class="col-sm-2 control-label no-padding-right">管理员名称</label>
                             <div class="col-sm-6">
                                 <input class="form-control" id="username" placeholder="{$data.name}" value="{$data.name}" name="name" required="" type="text">

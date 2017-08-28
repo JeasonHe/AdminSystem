@@ -72,8 +72,8 @@
                                                 <?php echo $v['value'];?>
                                             </textarea>
                                         <?php elseif($v['type']==3):
-                                            if($v['values']){
-                                                $arrradio=explode(',', $v['values']);
+                                            if($v['val']){
+                                                $arrradio=explode(',', $v['val']);
                                             }
                                             foreach ($arrradio as $k1 => $v1):
                                         ?>
@@ -84,12 +84,12 @@
                                         <?php endforeach;?>
                                         <?php elseif($v['type']==4):?>
                                             <label>
-                                                <input <?php if($v['value']==$v['values']){echo 'checked="checked"';} ?> name="<?php echo $v['enname'];?>" class="colored-success" value="<?php echo $v['values'];?>" type="checkbox">
-                                                <span class="text"><?php echo $v['values'];?></span>
+                                                <input <?php if($v['value']==$v['val']){echo 'checked="checked"';} ?> name="<?php echo $v['enname'];?>" class="colored-success" value="<?php echo $v['val'];?>" type="checkbox">
+                                                <span class="text"><?php echo $v['val'];?></span>
                                             </label>
                                         <?php elseif($v['type']==5):
-                                            if($v['values']){
-                                                $arrselect=explode(',', $v['values']);
+                                            if($v['val']){
+                                                $arrselect=explode(',', $v['val']);
                                             }
                                         ?>
                                         <select name="<?php echo $v['enname'];?>">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>TP5后台管理系统</title>
+    <title>ThinkPHP5.0</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,25 +22,25 @@
 <body>
 	<!-- 头部 -->
 	{include file="public/top" /} 
-
 	<!-- /头部 -->
 	
 	<div class="main-container container-fluid">
 		<div class="page-container">
-			            <!-- Page Sidebar -->
-           {include file="public/left" /} 
+			<!-- Page Sidebar -->
+            {include file="public/left" /} 
+            <!-- /Page Sidebar -->
             <!-- Page Content -->
             <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                                         <li>
-                        <a href="{:url('index/index')}">系统</a>
+                        <a href="#">系统</a>
                     </li>
                                         <li>
-                        <a href="{:url('cate/lst')}">栏目管理</a>
+                        <a href="{:url('lst')}">权限管理</a>
                     </li>
-                                        <li class="active">添加栏目</li>
+                                        <li class="active">添加权限</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -52,46 +52,35 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增栏目</span>
+                <span class="widget-caption">新增权限</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="{:url('cate/add')}" method="post">
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label no-padding-right">上级栏目</label>
+                    <form class="form-horizontal" role="form" action="" method="post">
+                       <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">上级权限</label>
                             <div class="col-sm-6">
-                                <select class="form-control" id="username" placeholder="" name="pid" required="">
-                                     <option value='0' checked='checked'>顶级栏目</option>
-                                     {volist name='list' id='list'}
-
-                                          <option value='{$list.id}' checked='checked'><?php echo str_repeat('---',$list['level']) ?>{$list.cateName}</option>
-                                     }
+                                <select class="form-control"  placeholder="" name="pid" required="" type="text">
+                                     <option value='0'>顶级权限</option>
+                                     {volist name='$rules' id='rule'}
+                                       <option value='{$rule.id}'><?php echo str_repeat('-',$rule['level']*4)?>{$rule.title}</option>
                                     {/volist}
                                 </select>
                             </div>
-                            <p class="help-block col-sm-4 red"></p>
                         </div>
-
-
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label no-padding-right">栏目名称</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">权限名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="cateName" required="" type="text">
+                                 <input class="form-control"  placeholder="" name="title" required="" type="text">
                             </div>
-                            <p class="help-block col-sm-4 red"></p>
+                            
                         </div>
-                        
-
                         <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">栏目类型</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">控/方</label>
                             <div class="col-sm-6">
-                                <select class="form-control" id="username" placeholder="" name="type" required="">
-                                     <option value='1' checked='checked'>文章列表</option>
-                                     <option value='2'>单页</option>
-                                     <option value='3'>图片列表</option>
-                                </select>
+                                 <input class="form-control"  placeholder="" name="name" required="" type="text">
                             </div>
-                        </div>  
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">保存信息</button>
@@ -117,7 +106,42 @@
     <script src="__ADMIN__/style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
-    
-
+    <script type="text/javascript">
+/* 权限配置 */
+$(function () {
+    //动态选择框，上下级选中状态变化
+    $('input.checkbox-parent').on('change', function () {
+        var dataid = $(this).attr("dataid");
+        $('input[dataid^=' + dataid + ']').prop('checked', $(this).is(':checked'));
+    });
+    $('input.checkbox-child').on('change', function () {
+        var dataid = $(this).attr("dataid");
+        dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+        var parent = $('input[dataid=' + dataid + ']');
+        if ($(this).is(':checked')) {
+            parent.prop('checked', true);
+            //循环到顶级
+            while (dataid.lastIndexOf("-") != 2) {
+                dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+                parent = $('input[dataid=' + dataid + ']');
+                parent.prop('checked', true);
+            }
+        } else {
+            //父级
+            if ($('input[dataid^=' + dataid + '-]:checked').length == 0) {
+                parent.prop('checked', false);
+                //循环到顶级
+                while (dataid.lastIndexOf("-") != 2) {
+                    dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+                    parent = $('input[dataid=' + dataid + ']');
+                    if ($('input[dataid^=' + dataid + '-]:checked').length == 0) {
+                        parent.prop('checked', false);
+                    }
+                }
+            }
+        }
+    });
+});
+    </script>
 
 </body></html>

@@ -58,6 +58,7 @@ class Conf extends Common
                 $this->error('修改配置失败！');
             }
         }
+
         $confs=ConfModel::find(input('id'));
         $this->assign('confs',$confs);
         return view();
@@ -75,36 +76,36 @@ class Conf extends Common
     public function conf(){
         if(request()->isPost()){
             $data=input('post.');
-            $formarr=array();
+            //获取提交上来的字段名
+            $dataArr=Array();
+            foreach($data as $k=>$v){
+                $dataArr[]=$k;
+            }
+            //从数据表获取所有的英文字段名
+            $_allArr=array();
+            $_allArr=db('conf')->field('enname')->select();
+            $allArr=array();
+            foreach ($_allArr as $k => $v) {
+                $allArr[]=$v['enname'];
+            }
+            $checkArr=array();
+            foreach($allArr as $k=>$v){
+                if(!in_array($v,$dataArr)){
+                    $checkArr[]=$v;
+                }
+            }
+            if($checkArr)
+            {
+                foreach($checkArr as $k=>$v){
+                 db('conf')->where('enname',$v)->update(['value'=>'']);
+                }
+            }
             foreach ($data as $k => $v) {
-                $formarr[]=$k;
+                db('conf')->where('enname',$k)->update(['value'=>$v]);
             }
-            $_confarr=db('conf')->field('enname')->select();
-            $confarr=array();
-            foreach ($_confarr as $k => $v) {
-                $confarr[]=$v['enname'];
-            }
-            $checkboxarr=array();
-            foreach ($confarr as $k => $v) {
-                if(!in_array($v, $formarr)){
-                    $checkboxarr[]=$v;
-                }
-            }
-            if($checkboxarr){
-                foreach ($checkboxarr as $ke => $v) {
-                    ConfModel::where('enname',$v)->update(['value'=>'']);
-                }
-            }
-            if($data){
-            
-                foreach ($data as $k=>$v) {
-                    ConfModel::where('enname',$k)->update(['value'=>$v]);
-                }
 
-                $this->success('修改配置成功！');
+           
 
-            }
-            return;
         }
         $confres=ConfModel::order('sort desc')->select();
         $this->assign('confres',$confres);

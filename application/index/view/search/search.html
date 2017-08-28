@@ -51,15 +51,21 @@
     <div id="xh_container">
         <div id="xh_content">
 
-      {include file="public/position"}
+    <div class="path">
+    <h3>您搜索的关键词:{$keyword}</h3>
+  </div>
 
           <div class="clear"></div>
             <div class="xh_area_h_3" style="margin-top: 40px;">
-{volist name='artList' id='art'}
+{if condition="$count eq 0"}
+  未找到与您搜索的关键词相关内容
+{else/}
+{volist name='result' id='art'}
+
     <div class="xh_post_h_3 ofh">
         <div class="xh">
-           <a target="_blank" href="{:url('Article/index',array('id'=>$art.id))}" title="Alain Massabova: 40 Years in Paris BMX 视频">
-              <img src="{$art.pic}" alt="Alain Massabova: 40 Years in Paris BMX 视频" height="240" width="400">
+           <a target="_blank" href="{:url('Article/index',array('id'=>$art.id))}" >
+              <img src="{$art.pic}"  height="240" width="400">
            </a>
         </div>
         <div class="r ofh">
@@ -77,8 +83,10 @@
     </div>
 </div>
 {/volist} 
+{/if}
+
   <div style="width:100%;text-align:center;margin:30px 0px;">
-{$artList->render()}
+{$result->render()}
 </div>
 
 </div>
@@ -92,15 +100,6 @@
 
 <div style="background: url('__INDEX__/style/img/hots_bg.png') no-repeat scroll 0 0 transparent;width:250px;height:52px;margin-bottom:15px;">
 </div> 
-<ul id="ulHot">
-
-<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
-<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="/lookbike/roadbicycle/110.html" target="_blank"><img src="__INDEX__/images/68.png" width="83" title="环西冠军克里斯霍纳的个性化定制座驾 Trek Madone公路车" /></a></div>
-<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="/lookbike/roadbicycle/110.html" target="_blank" title="环西冠军克里斯霍纳的个性化定制座驾 Trek Madone公路车">环西冠军克里斯霍纳的个性化定制座驾 Trek Ma</a></div>
-</li>
-
-
-</ul> 
                 </div>
             
             <div class="widget portrait">
@@ -161,6 +160,8 @@
 {include file="public/footer" /}
 
 
+<div style="display: none;" id="scroll">
+</div>
 <script type="text/javascript" src="__INDEX__/style/z700bike_global.js"></script>
  
 

@@ -6,8 +6,13 @@ class Admin extends Common
 {
     public function lst()
     {
+        $auth=new Auth;
         $model=new adminModel();
         $adminRes=$model->paginate(8);
+        foreach ($adminRes as $k => $v) {
+           $data=$auth->getGroups($v['id']);
+           $v['title']=$data[0]['title'];
+        }
         $this->assign('adminRes',$adminRes);
         return view();
     }
@@ -29,8 +34,10 @@ class Admin extends Common
            else{
                $this->error('新增失败', 'admin/add');
            }
-          return true;
+         
       }
+      $data=db('authGroup')->select();
+      $this->assign('list',$data);
         return view();
     }
 
@@ -45,21 +52,24 @@ class Admin extends Common
            if($result !== true){
               $this->error($result);
            }
+
             if($data){
                 $this->success('修改管理员信息成功','admin/lst');
             }
             else{
                 $this->error('修改管理员信息失败','');
             }
-        return ;
        }
 
         $data=db('admin')->find($id);
+        $dat=db('authGroup')->select();
+        $da=db('authGroupAccess')->find($id);
 
-        $this->assign('data',$data);
+        $this->assign(array('data'=>$data,'list'=>$dat,'access'=>$da));
 
        return view();
     }
+
 
     public function del($id){
          $model=new adminModel();
@@ -80,4 +90,6 @@ class Admin extends Common
         session(null);
         $this->success('成功退出系统','login/index');
     }
+
+    
 }

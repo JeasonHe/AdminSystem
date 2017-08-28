@@ -29,7 +29,7 @@ class Cate extends Common
               $this->error($result);
            }
         if(db('cate')->insert($data)){
-          $this->success('新增栏目成功','cate/lst');
+          $this->success('新增栏目成功','cate/add');
         }
         else{
           $this->error('新增栏目失败','cate/add');

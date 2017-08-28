@@ -56,11 +56,12 @@
                         <thead class="">
                             <tr>
                                 <th class="text-center" width='10%'>ID</th>
-                                <th class="text-center" width="20%">文章名称</th>
+                                <th class="text-center" width="15%">文章名称</th>
                                  <th class="text-center" width='10%' >作者</th>
                                 <th class="text-center"  width='20%'>缩略图</th>
                                 <th class="text-center"   width='15%'>所属分类</th>
-                                <th class="text-center"  width='25%'>操作</th>
+                                <th class="text-center"   width='10%'>是否推荐</th>
+                                <th class="text-center"  width='20%'>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,6 +75,7 @@
                                 {else/}暂无缩略图
                                 {/if}</td>
                                 <td align="center">{$lists.cateName}</td>    
+                                <td align="center">{if condition="$lists['push'] eq 1"}是{else/}否{/if}</td>    
                                 <td align="center">
                                 <a href="{:url('Article/edit',array('id'=>$lists.id))}" class="btn btn-primary btn-sm shiny">
                                 <i class="fa fa-edit"></i> 编辑

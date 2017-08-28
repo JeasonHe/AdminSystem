@@ -1,0 +1,6 @@
+  <div class="path">
+  <a href='http://127.0.0.1/bike/public/index.php/index'>主页</a> 
+  {volist name='pos' id='position'}
+    ><a href="http://127.0.0.1/bike/public/index.php/index/{if condition="$position['type'] eq 1"}Artlist{elseif condition="$position['type'] eq 2"/}Page{elseif condition="$position['type'] eq 3"/}Imglist{/if}/index/id/{$position.id}">{$position.cateName}</a> 
+  {/volist}
+  </div>

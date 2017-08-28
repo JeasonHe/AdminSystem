@@ -58,6 +58,17 @@
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="{:url('admin/add')}" method="post">
                         <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label no-padding-right">所属用户权限组</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="username" placeholder="" name="group_id" required="">
+                                     {volist name='list' id='list'}
+                                          <option value='{$list.id}'>{$list.title}</option>
+                                     }
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="name" class="col-sm-2 control-label no-padding-right">管理员名称</label>
                             <div class="col-sm-6">
                                 <input class="form-control" id="username" placeholder="" name="name" required="" type="text">

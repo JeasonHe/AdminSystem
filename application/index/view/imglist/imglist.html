@@ -2,9 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>童老师ThinkPHP5交流群：484519446</title>
-<meta name="description" content="童老师ThinkPHP5交流群：484519446" />
-<meta name="keywords" content="童老师ThinkPHP5交流群：484519446" />
+<title>{$confRes.sitename}</title>
+<meta name="description" content="{$confRes.sitedescription}" />
+<meta name="keywords" content="{$confRes.sitekeyword}" />
+   <link href="__INDEX__/style/bootstrap.css" rel="stylesheet" />
+    <script src="__INDEX__/style/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="__INDEX__/style/style.css" />
     <script src="__INDEX__/style/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="__INDEX__/style/jquery.error.js" type="text/javascript"></script>
@@ -115,161 +117,27 @@
 
         
 <div class="xh_265x265x00">
+   {volist name='ImgList' id='img'}
     <div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
                 border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
                 <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
                     margin-left: 14px;">
-                    <a target="_blank" href="/life/416.html"><img src="__INDEX__/images/1-1402061T015922.jpg" alt="COACH再度携手王力宏 踩单车演绎2013秋冬男士纽约风尚" height="188" width="313"></a>
+                    <a target="_blank" href="{:url('Article/index',array('id'=>$img.id))}"><img src="{$img.pic}"  height="188" width="313"></a>
                 </div>
                 <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
+                    <div style="font-size: 12px;color:#cccccc;">{$img.time|date='Y年m月d日',###}</div>
                     <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/416.html">COACH再度携手王力宏 踩单车演绎2013秋冬男士纽约风尚</a></div>
+                       <a target="_blank" href="{:url('Article/index',array('id'=>$img.id))}">{$img.description}</a>
+                    </div>
                     
                 </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/392.html"><img src="__INDEX__/images/352.jpg" alt="骑看世界：三个女孩的欧洲骑行之路" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/392.html">骑看世界：三个女孩的欧洲骑行之路</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/395.html"><img src="__INDEX__/images/355.jpg" alt="骑看世界：探索地中海科西嘉岛" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/395.html">骑看世界：探索地中海科西嘉岛</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/361.html"><img src="__INDEX__/images/321.jpg" alt="骑行40000公里 英国胶片摄影师的骑游之旅" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/361.html">骑行40000公里 英国胶片摄影师的骑游之旅</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/394.html"><img src="__INDEX__/images/1-1402061F00W33.jpg" alt="骑看世界：春节骑行海南岛 畅游冬日骑行天堂" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/394.html">骑看世界：春节骑行海南岛 畅游冬日骑行天堂</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/364.html"><img src="__INDEX__/images/324.jpg" alt="隆猫西班牙自行车之旅-Mallorca岛梦幻旅程（上）" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/364.html">隆猫西班牙自行车之旅-Mallorca岛梦幻旅程（上）</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/393.html"><img src="__INDEX__/images/353.jpg" alt="复古骑行上海，听法国大梧桐诉说旧日故事" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/393.html">复古骑行上海，听法国大梧桐诉说旧日故事</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/389.html"><img src="__INDEX__/images/347.jpg" alt="执着的小辫与西藏的骑车旅行" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/389.html">执着的小辫与西藏的骑车旅行</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/390.html"><img src="__INDEX__/images/348.jpg" alt="大理洱海骑行 到挖色赶个大集" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/390.html">大理洱海骑行 到挖色赶个大集</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/391.html"><img src="__INDEX__/images/350.jpg" alt="KONA 29寸车骑游哥伦比亚" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/391.html">KONA 29寸车骑游哥伦比亚</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/386.html"><img src="__INDEX__/images/344.jpg" alt="Cyclist:赵勇权传授台湾环岛骑行摄影经验" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/386.html">Cyclist:赵勇权传授台湾环岛骑行摄影经验</a></div>
-                    
-                </div>
-            </div><div style="float: left; width: 343px; height: 293px; background-color: #ffffff;
-                border: solid 1px #ccc; margin-left: 15px;margin-top: 15px;">
-                <div style="background-color: #cccccc; width: 313px; height: 188px; margin-top: 16px;
-                    margin-left: 14px;">
-                    <a target="_blank" href="/life/387.html"><img src="__INDEX__/images/346.jpg" alt="两个青海 骑行在3197米之上" height="188" width="313"></a>
-                </div>
-                <div style="margin-left: 14px; line-height: 25px; margin-top: 10px;">
-                    <div style="font-size: 12px;color:#cccccc;">2014年02月06日</div>
-                    <div style="font-size: 14px;height:45px;">
-                       <a target="_blank" href="/life/387.html">两个青海 骑行在3197米之上</a></div>
-                    
-                </div>
-            </div>
- 
            
-        
-    <div style="clear: both;">
-    </div>
-                <div id="pagination"><div class="wp-pagenavi">
-                <span class="current">1</span><a class="page larger" href='list_2.html'>2</a><a class="page larger" href='list_3.html'>3</a><a class="page larger" href='list_2.html'>下一页</a><a class="page larger" href='list_3.html'>末页</a><span class="pages">共 3 页，36条</span>
-
-                </div></div>    
-</div>
+           </div>
+    {/volist}
+       <div class="clear"></div>
+        <div style="width:100%;text-align:center;margin:30px 0px;">
+    {$ImgList->render()}
+</div></div>
 
         
 

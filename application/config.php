@@ -19,7 +19,11 @@ return [
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => false,
+    'app_trace'              => true,
+    'trace' =>  [
+    // 使用浏览器console显示页面trace信息
+        'type'  =>  'console',
+    ],
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -242,4 +246,24 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+     //验证码配置
+    'captcha'  => [
+    // 字体大小
+    'fontSize' => 100,
+    // 验证码长度（位数）
+    'length'   => 4,
+    //是否使用背景图片
+    //'useImgBg' => true,
+    //是否使用混淆曲线
+    'useCurve'=> true,
+    //验证成功后重置
+    'reset' => true,
+    //斑点
+    'useNoise' => true,
+    //背景色
+    //'bg' => 000000,
+],
+
+
 ];

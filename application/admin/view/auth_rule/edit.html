@@ -38,9 +38,9 @@
                         <a href="#">系统</a>
                     </li>
                                         <li>
-                        <a href="{:url('conf\lst')}">配置管理</a>
+                        <a href="{:url('lst')}">权限管理</a>
                     </li>
-                                        <li class="active">修改配置</li>
+                                        <li class="active">修改权限</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -52,44 +52,34 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">修改配置</span>
+                <span class="widget-caption">修改权限</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="" method="post">
-                        <input type="hidden" name="id" value="{$confs.id}">
+                        <input type="hidden" name="id" value="{$authRules.id}" />
                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">中文名称</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">上级权限</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="cnname" value="{$confs.cnname}" required="" type="text">
+                                <select class="form-control"  placeholder="" name="pid" required="" type="text">
+                                     <option value='0'>顶级权限</option>
+                                     {volist name='$rules' id='rule'}
+                                       <option {if condition="$rule.id eq $authRules['pid']"}selected='selected'{/if}value='{$rule.id}'><?php echo str_repeat('-',$rule['level']*4)?>{$rule.name}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">权限名称</label>
+                            <div class="col-sm-6">
+                                 <input class="form-control"  placeholder="{$authRules['title']}" name="title" required="" type="text" value="{$authRules['title']}">
                             </div>
                             
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">英文名称</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">控/方</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="enname" value="{$confs.enname}" required="" type="text">
-                            </div>
-                           
-                        </div>
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">配置类型</label>
-                            <div class="col-sm-6">
-                                <select class='form-control'disabled="disabled" name="type">
-                                    <option value="0">请选择</option>
-                                    <option {if condition="$confs['type'] eq 1"} selected="selected"{/if} value="1">单行文本</option>
-                                    <option {if condition="$confs['type'] eq 2"} selected="selected"{/if} value="2">多行文本</option>
-                                    <option {if condition="$confs['type'] eq 3"} selected="selected"{/if} value="3">单选按钮</option>
-                                    <option {if condition="$confs['type'] eq 4"} selected="selected"{/if} value="4">复选框</option>
-                                    <option {if condition="$confs['type'] eq 5"} selected="selected"{/if} value="5">下拉菜单</option>
-                                </select>
-                            </div>
-                          
-                        </div>
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">可选值</label>
-                            <div class="col-sm-6">
-                                <textarea name="val" class="form-control">{$confs.val}</textarea>
+                                 <input class="form-control"  placeholder="{$authRules['name']}" name="name" required="" type="text" value="{$authRules['name']}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -118,6 +108,42 @@
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
     
-
+<script type="text/javascript">
+/* 权限配置 */
+$(function () {
+    //动态选择框，上下级选中状态变化
+    $('input.checkbox-parent').on('change', function () {
+        var dataid = $(this).attr("dataid");
+        $('input[dataid^=' + dataid + ']').prop('checked', $(this).is(':checked'));
+    });
+    $('input.checkbox-child').on('change', function () {
+        var dataid = $(this).attr("dataid");
+        dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+        var parent = $('input[dataid=' + dataid + ']');
+        if ($(this).is(':checked')) {
+            parent.prop('checked', true);
+            //循环到顶级
+            while (dataid.lastIndexOf("-") != 2) {
+                dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+                parent = $('input[dataid=' + dataid + ']');
+                parent.prop('checked', true);
+            }
+        } else {
+            //父级
+            if ($('input[dataid^=' + dataid + '-]:checked').length == 0) {
+                parent.prop('checked', false);
+                //循环到顶级
+                while (dataid.lastIndexOf("-") != 2) {
+                    dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+                    parent = $('input[dataid=' + dataid + ']');
+                    if ($('input[dataid^=' + dataid + '-]:checked').length == 0) {
+                        parent.prop('checked', false);
+                    }
+                }
+            }
+        }
+    });
+});
+    </script>
 
 </body></html>

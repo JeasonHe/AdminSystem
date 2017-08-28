@@ -4,7 +4,7 @@ use think\Model;
 class Cate extends Model
 { 
     public function cateTree(){
-       $data=db('cate')->paginate(10);
+       $data=db('cate')->select();
        return $this->cateSort($data);
     }
 
